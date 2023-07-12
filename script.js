@@ -1,6 +1,8 @@
 const input_text = document.getElementById('Input-box');
 const Parent_ul = document.getElementById('parent');
-const btn1 = document.getElementsByClassName('btn');
+const input_value = document.getElementById('input-search');
+
+
 console.log(Parent_ul);
 function add(){
     if(input_text.value === ""){
@@ -25,8 +27,11 @@ Parent_ul.addEventListener("click",function(event){
         localsaveData()
     }
     else if(event.target.tagName==='SPAN'){
+        if(confirm("Are you Want to Delete the list...")){
         event.target.parentElement.remove();
         localsaveData()
+        }
+       
     }
 
 },false);
@@ -41,4 +46,22 @@ function getData(){
     Parent_ul.innerHTML=localStorage.getItem("Data");
 }
 getData();
+
+
+// Serach bar
+input_value.addEventListener("keyup", function(event){
+    // console.log(event.target.value.toLocalelLowerCase());
+    let data = event.target.value.toLocaleLowerCase();
+    let li = document.getElementsByTagName("LI");
+    console.log(li);
+    Array.from(li).forEach((elem)=>{
+        console.log(elem.firstChild.textContent.toLocaleLowerCase());
+        if(elem.firstChild.textContent.toLocaleLowerCase().indexOf(data)!=-1){
+            elem.style.display='block';
+        }
+        else{
+            elem.style.display='none';
+        }
+    })
+})
 
