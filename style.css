@@ -89,10 +89,9 @@ ul li::before {
 .search{
     position: absolute;
     right: 0;
-    margin-top: 20px;
-    margin-right: 100px;
-   
-    background-color: white;
+    background-color: #edeef0;
+ margin-right: 10px;
+
 }
 .search input{
     
